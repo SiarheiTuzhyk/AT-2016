@@ -2,11 +2,10 @@ Task:
 
 
  Implement FTP Client via Java. The client should satisfy the next requirements:
-	ï	Be console only (without GUI)
-
-	ï	Should print ìusageî on start with available commands
-
-	ï	Should be able to:
+ 
+	‚Ä¢	Be console only (without GUI)
+	‚Ä¢	Should print ‚Äúusage‚Äù on start with available commands
+	‚Ä¢	Should be able to:
 		o	Connect ftp server
 		o	Download files
 		o	Go into folders
