@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+        <constructorPositive expected="exist" firstSide="1.0" secondSide="1.0" thirdSide="1.0"/>
+        <constructorPositive expected="exist" firstSide="4" secondSide="4" thirdSide="2"/>
+        <constructorPositive expected="exist" firstSide="3" secondSide="4" thirdSide="5"/>
+        <constructorPositive expected="exist" firstSide="3" secondSide="4" thirdSide="6.9"/>
+        <constructorPositive expected="exist" firstSide="0.0001" secondSide="0.0001" thirdSide="0.0001"/>
+        <constructorPositive expected="exist" firstSide="1" secondSide="1" thirdSide="0.0001"/>
+        <constructorPositive expected="exist" firstSide="4.0001" secondSide="6.00001" thirdSide="4.000001"/>
+        <constructorPositive expected="exist" firstSide="3" secondSide="4.0000001" thirdSide="5"/>
+
+        <triangleType expected="equilateral" firstSide="1" secondSide="1" thirdSide="1"/>
+        <triangleType expected="equilateral" firstSide="0.001" secondSide="0.001" thirdSide="0.001"/>
+        <triangleType expected="isosceles" firstSide="4.0001" secondSide="6.00001" thirdSide="4.0001"/>
+        <triangleType expected="isosceles" firstSide="4.0001" secondSide="4.0001" thirdSide="6.00001"/>
+        <triangleType expected="isosceles" firstSide="6.00001" secondSide="4.0001" thirdSide="6.00001"/>
+        <triangleType expected="isosceles" firstSide="2" secondSide="2" thirdSide="3"/>
+        <triangleType expected="isosceles" firstSide="2" secondSide="3" thirdSide="2"/>
+        <triangleType expected="isosceles" firstSide="3" secondSide="2" thirdSide="2"/>
+        <triangleType expected="ordinary" firstSide="4.0001" secondSide="6.00001" thirdSide="4.0"/>
+        <triangleType expected="ordinary" firstSide="4.0" secondSide="6.00001" thirdSide="4.0001"/>
+        <triangleType expected="ordinary" firstSide="3" secondSide="4" thirdSide="6"/>
+        <triangleType expected="ordinary" firstSide="3" secondSide="4.000001" thirdSide="4.00001"/>
+
+        <constructorNegative firstSide="-1" secondSide="-1" thirdSide="-1"/>
+        <constructorNegative firstSide="-0.001" secondSide="-0.001" thirdSide="-0.001"/>
+        <constructorNegative firstSide="1E100" secondSide="1E100" thirdSide="99E100"/>
+        <constructorNegative firstSide="-4.0001" secondSide="-6.00001" thirdSide="-1"/>
+        <constructorNegative firstSide="-3" secondSide="-4.000001" thirdSide="-5"/>
+        <constructorNegative firstSide="0" secondSide="0" thirdSide="0"/>
+        <constructorNegative firstSide="1" secondSide="1" thirdSide="0"/>
+        <constructorNegative firstSide="1" secondSide="0" thirdSide="1"/>
+        <constructorNegative firstSide="0" secondSide="1" thirdSide="1"/>
+        <constructorNegative firstSide="1" secondSide="0" thirdSide="0"/>
+        <constructorNegative firstSide="0" secondSide="1" thirdSide="0"/>
+        <constructorNegative firstSide="0" secondSide="0" thirdSide="1"/>
+        <constructorNegative firstSide="-1" secondSide="0" thirdSide="0"/>
+        <constructorNegative firstSide="0" secondSide="-1" thirdSide="0"/>
+        <constructorNegative firstSide="0" secondSide="0" thirdSide="-1"/>
+        <constructorNegative firstSide="0.0001" secondSide="0.0001" thirdSide="0"/>
+        <constructorNegative firstSide="0.0001" secondSide="0.0" thirdSide="0.0001"/>
+        <constructorNegative firstSide="0.0" secondSide="0.0001" thirdSide="0.0001"/>
+        <constructorNegative firstSide="-5" secondSide="4" thirdSide="4"/>
+        <constructorNegative firstSide="4" secondSide="-5" thirdSide="5"/>
+        <constructorNegative firstSide="4" secondSide="5" thirdSide="-5"/>
+        <constructorNegative firstSide="1" secondSide="1" thirdSide="2"/>
+        <constructorNegative firstSide="7" secondSide="4" thirdSide="3"/>
+        <constructorNegative firstSide="2" secondSide="6" thirdSide="2"/>
+        <constructorNegative firstSide="1" secondSide="1" thirdSide="10"/>
+        <constructorNegative firstSide="1" secondSide="1" thirdSide="-1"/>
+        <constructorNegative firstSide="1" secondSide="-1" thirdSide="1"/>
+        <constructorNegative firstSide="-1" secondSide="1" thirdSide="1"/>
+        <constructorNegative firstSide="1" secondSide="1" />
+        <constructorNegative firstSide="1" thirdSide="1" />
+        <constructorNegative secondSide="1" thirdSide="1" />
+        <constructorNegative firstSide="1"/>
+        <constructorNegative secondSide="1" />
+        <constructorNegative thirdSide="1"/>
+
+        <positiveInput firstSide="1" secondSide="1" thirdSide="1"/>
+        <positiveInput firstSide="0" secondSide="0" thirdSide="0"/>
+        <positiveInput firstSide="0.0001" secondSide="0.0001" thirdSide="0.0001"/>
+        <positiveInput firstSide="-1" secondSide="-1" thirdSide="-1"/>
+        <positiveInput firstSide="3" secondSide="4.000001" thirdSide="5"/>
+        <positiveInput firstSide="1E100" secondSide="1E100" thirdSide="99E100"/>
+        <positiveInput firstSide="1." secondSide="1" thirdSide="1"/>
+        <positiveInput firstSide="1" secondSide="1." thirdSide="1"/>
+        <positiveInput firstSide="1" secondSide="1" thirdSide="1."/>
+        <positiveInput firstSide="+5" secondSide="1" thirdSide="1"/>
+        <positiveInput firstSide="1" secondSide="+5" thirdSide="1"/>
+        <positiveInput firstSide="1" secondSide="1" thirdSide="+5"/>
+        <positiveInput firstSide="4.0" secondSide="4.0" thirdSide="2.0"/>
+
+        <negativeInput firstSide="1f" secondSide="1" thirdSide="1"/>
+        <negativeInput firstSide="0" secondSide="nul" thirdSide="0"/>
+        <negativeInput firstSide="-1" secondSide="-1d" thirdSide="-1"/>
+        <negativeInput firstSide="0,9" secondSide="1" thirdSide="1"/>
+        <negativeInput firstSide="1" secondSide="0,9" thirdSide="1"/>
+        <negativeInput firstSide="1" secondSide="1" thirdSide="0,9"/>
+        <negativeInput firstSide="1/2" secondSide="1" thirdSide="1"/>
+        <negativeInput firstSide="1" secondSide="1/2" thirdSide="1"/>
+        <negativeInput firstSide="1" secondSide="1" thirdSide="1/2"/>
+        <negativeInput firstSide="1" secondSide="\1" thirdSide="1"/>
+        <negativeInput firstSide="\1" secondSide="1" thirdSide="1"/>
+        <negativeInput firstSide="1" secondSide="1" thirdSide="\1"/>
+        <negativeInput firstSide="o" secondSide="0" thirdSide="1"/>
+        <negativeInput firstSide="0" secondSide="o" thirdSide="1"/>
+        <negativeInput firstSide="1" secondSide="0" thirdSide="o"/>
+</data>
