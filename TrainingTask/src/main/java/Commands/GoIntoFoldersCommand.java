@@ -12,9 +12,9 @@ public class GoIntoFoldersCommand implements Command {
 
     public void execute(FTPClient ftpClient) throws IOException {
         if (ftpClient.isConnected()) {
-            String workingDirectory = ftpClient.printWorkingDirectory();
+            String workingDirectory = ftpClient.printWorkingDirectory().concat("/");
             ftpClient
-                .changeWorkingDirectory(workingDirectory + "/" + command[command.length - 1]);
+                .changeWorkingDirectory(workingDirectory.concat(command[command.length - 1]));
             System.out.println("Result: Success!");
         } else {
             System.out.println("You are not connect to ftp-server.");
