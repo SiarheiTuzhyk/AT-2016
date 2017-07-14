@@ -1,5 +1,6 @@
 package Commands;
 
+import Instruction.Instruction;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -14,22 +15,20 @@ import org.apache.commons.net.ftp.FTPFile;
  */
 public class DownloadFile implements Command {
 
-    String[] command;
 
-    public void execute(FTPClient ftpClient) throws IOException {
+    public void execute(FTPClient ftpClient, Instruction instruction) throws IOException {
         if (ftpClient.isConnected()) {
             ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
             String workingDirectory = ftpClient.printWorkingDirectory();
-            String remoteFile = command[command.length - 1];
+            String remoteFile = instruction.getPath();
 
             FTPFile[] filesPerPath = ftpClient.listFiles(workingDirectory);
             for (FTPFile ftpFile : filesPerPath) {
-                if (ftpFile.getName().equals(command[command.length - 1]) && ftpFile
-                    .isDirectory()) {
+                if (ftpFile.getName().equals(instruction.getPath()) && ftpFile.isDirectory()) {
                     ftpClient.changeWorkingDirectory(workingDirectory.concat("/" + remoteFile));
                     System.out
                         .println("Change work directory to: " + ftpClient.printWorkingDirectory());
-                } else if (ftpFile.getName().equals(command[command.length - 1]) && ftpFile
+                } else if (ftpFile.getName().equals(instruction.getPath()) && ftpFile
                     .isFile()) {
                     boolean dirDownload = new File(".//Download").mkdir();
                     File downloadFile = new File(".//Download/".concat(remoteFile));
@@ -53,8 +52,7 @@ public class DownloadFile implements Command {
 
     }
 
-    public boolean isExecutable(String command) {
-        this.command = command.split(" ");
-        return this.command[0].equals("download");
+    public boolean isExecutable(Instruction instruction) {
+        return instruction.getCommand().equals("download");
     }
 }

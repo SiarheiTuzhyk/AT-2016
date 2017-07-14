@@ -1,5 +1,6 @@
 package Commands;
 
+import Instruction.Instruction;
 import java.io.IOException;
 import org.apache.commons.net.ftp.FTPClient;
 
@@ -8,13 +9,11 @@ import org.apache.commons.net.ftp.FTPClient;
  */
 public class GoIntoFoldersCommand implements Command {
 
-    String[] command;
-
-    public void execute(FTPClient ftpClient) throws IOException {
+    public void execute(FTPClient ftpClient, Instruction instruction) throws IOException {
         if (ftpClient.isConnected()) {
             String workingDirectory = ftpClient.printWorkingDirectory().concat("/");
             ftpClient
-                .changeWorkingDirectory(workingDirectory.concat(command[command.length - 1]));
+                .changeWorkingDirectory(workingDirectory.concat(instruction.getPath()));
             System.out.println("Result: Success!");
         } else {
             System.out.println("You are not connect to ftp-server.");
@@ -22,8 +21,7 @@ public class GoIntoFoldersCommand implements Command {
         }
     }
 
-    public boolean isExecutable(String command) {
-        this.command = command.split(" ");
-        return this.command[0].equals("goInto");
+    public boolean isExecutable(Instruction instruction) {
+        return instruction.getCommand().equals("goInto");
     }
 }

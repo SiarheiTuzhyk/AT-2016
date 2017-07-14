@@ -14,9 +14,16 @@ public class Main {
         + "\nConnect to FTP Server - connect;"
         + "\nDownload file - download;"
         + "\nGo into folders - goInto;"
-        + "\nGo to parent directory - parentDir;"
+        + "\nGo to parent directory - goToParentDir;"
         + "\nPrint directory content - printCont;";
 
+    //
+    // connect <hostname> <login> <password>
+    // goInto <path>
+    // goToParentDir
+    // download <fileName>
+    // printCont
+    //
     public static void main(String[] args) {
         System.out.println(USAGE);
         // TODO: 7/13/2017 Maybe, FTPClient must be a singleton!
@@ -26,12 +33,14 @@ public class Main {
         try {
             Scenario scenario = new Scenario(ftpClient);
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            ParseEnteredString parseEnteredString = new ParseEnteredString();
             System.out.print("\nType your command: ");
-            String enteredCommand = reader.readLine();
-            while (!enteredCommand.isEmpty()) {
-                scenario.resultOfCommandImplementation(enteredCommand);
+            String enteredString = reader.readLine();
+            while (!enteredString.isEmpty()) {
+                scenario.resultOfCommandImplementation(
+                    parseEnteredString.getInstruction(enteredString));
                 System.out.print("\nType your command: ");
-                enteredCommand = reader.readLine();
+                enteredString = reader.readLine();
             }
         } catch (IOException e) {
             e.printStackTrace();

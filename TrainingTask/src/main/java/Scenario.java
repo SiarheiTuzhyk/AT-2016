@@ -1,4 +1,5 @@
 import Commands.Command;
+import Instruction.Instruction;
 import java.io.IOException;
 import java.util.List;
 import org.apache.commons.net.ftp.FTPClient;
@@ -16,17 +17,14 @@ public class Scenario {
         this.ftpClient = ftpClient;
     }
 
-    public void resultOfCommandImplementation(String enteredCommand) throws IOException {
+    public void resultOfCommandImplementation(Instruction enteredInstruction) throws IOException {
         try {
-            int countImplCommand = 0;
-            for (Command command : commandsBuild) {
-                if (command.isExecutable(enteredCommand)) {
-                    command.execute(ftpClient);
-                    countImplCommand++;
+            if (enteredInstruction != null) {
+                for (Command command : commandsBuild) {
+                    if (command.isExecutable(enteredInstruction)) {
+                        command.execute(ftpClient, enteredInstruction);
+                    }
                 }
-            }
-            if (countImplCommand == 0) {
-                System.out.println("Not valid command!");
             }
         } catch (IOException ex) {
             throw new IOException(ex);

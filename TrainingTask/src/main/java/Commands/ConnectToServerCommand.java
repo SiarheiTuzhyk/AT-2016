@@ -1,5 +1,6 @@
 package Commands;
 
+import Instruction.Instruction;
 import java.io.IOException;
 import org.apache.commons.net.ftp.FTPClient;
 
@@ -8,11 +9,11 @@ import org.apache.commons.net.ftp.FTPClient;
  */
 public class ConnectToServerCommand implements Command {
 
-    public void execute(FTPClient ftpClient) throws IOException {
+    public void execute(FTPClient ftpClient, Instruction instruction) throws IOException {
 
-        ftpClient.connect("c64.rulez.org");
+        ftpClient.connect(instruction.getHostName());
         ftpClient.enterRemotePassiveMode();
-        ftpClient.login("anonymous", "anonymous");
+        ftpClient.login(instruction.getLogin(), instruction.getPassword());
         if (ftpClient.isConnected()) {
             System.out.println("Connected;");
             System.out.println("Result: Success!");
@@ -22,7 +23,7 @@ public class ConnectToServerCommand implements Command {
         }
     }
 
-    public boolean isExecutable(String command) {
-        return command.equals("connect");
+    public boolean isExecutable(Instruction instruction) {
+        return instruction.getCommand().equals("connect");
     }
 }

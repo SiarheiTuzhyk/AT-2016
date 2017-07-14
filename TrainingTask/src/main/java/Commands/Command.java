@@ -1,5 +1,6 @@
 package Commands;
 
+import Instruction.Instruction;
 import java.io.IOException;
 import org.apache.commons.net.ftp.FTPClient;
 
@@ -10,6 +11,8 @@ import org.apache.commons.net.ftp.FTPClient;
  * @version 1.0
  */
 public interface Command {
-    void execute(FTPClient ftpClient) throws IOException;
-    boolean isExecutable(String command);
+
+    void execute(FTPClient ftpClient, Instruction instruction) throws IOException;
+
+    boolean isExecutable(Instruction command);
 }
