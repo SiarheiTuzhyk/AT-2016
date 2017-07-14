@@ -8,19 +8,22 @@ import org.apache.commons.net.ftp.FTPClient;
  */
 public class GoIntoFoldersCommand implements Command {
 
-    String command;
+    String[] command;
 
     public void execute(FTPClient ftpClient) throws IOException {
-        if(ftpClient.isConnected()){
-            String workdir = ftpClient.printWorkingDirectory();
-            ftpClient.changeWorkingDirectory(workdir+"/"+command.split(" ")[1]);
+        if (ftpClient.isConnected()) {
+            String workingDirectory = ftpClient.printWorkingDirectory();
+            ftpClient
+                .changeWorkingDirectory(workingDirectory + "/" + command[command.length - 1]);
+            System.out.println("Result: Success!");
         } else {
-            System.out.println("You are not connect to server!");
+            System.out.println("You are not connect to ftp-server.");
+            System.out.println("Result: Fail!");
         }
     }
 
     public boolean isExecutable(String command) {
-        this.command = command;
-        return command.split(" ")[0].equals("goto");
+        this.command = command.split(" ");
+        return this.command[0].equals("goto");
     }
 }

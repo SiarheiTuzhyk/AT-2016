@@ -19,8 +19,10 @@ public class ConnectToServerCommand implements Command {
         ftpClient.login("anonymous", "anonymous");
         if (ftpClient.isConnected()) {
             System.out.println("Connected;");
+            System.out.println("Result: Success!");
         } else {
             System.out.println("You are not connect to ftp-server.");
+            System.out.println("Result: Fail!");
         }
     }
 

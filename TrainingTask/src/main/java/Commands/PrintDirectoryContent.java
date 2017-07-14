@@ -15,8 +15,10 @@ public class PrintDirectoryContent implements Command {
             for (FTPFile file : files) {
                 System.out.println(file.getName());
             }
+            System.out.println("Result: Success!");
         } else {
             System.out.println("You are not connect to ftp-server.");
+            System.out.println("Result: Fail!");
         }
     }
 

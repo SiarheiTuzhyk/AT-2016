@@ -23,13 +23,25 @@ public class Main {
         Scenario scenario = new Scenario(ftpClient);
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            System.out.print("\nType your command: ");
             String enteredCommand = reader.readLine();
             while (!enteredCommand.isEmpty()){
                 scenario.resultOfCommandImplementation(enteredCommand);
+                System.out.print("\nType your command: ");
                 enteredCommand = reader.readLine();
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (ftpClient.isConnected()) {
+                    ftpClient.logout();
+                    ftpClient.disconnect();
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
+
     }
 }

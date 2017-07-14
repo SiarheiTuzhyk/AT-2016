@@ -11,8 +11,10 @@ public class GoToParentDirectoryCommand implements Command {
     public void execute(FTPClient ftpClient) throws IOException {
         if(ftpClient.isConnected()){
             ftpClient.changeToParentDirectory();
+            System.out.println("Result: Success!");
         } else {
-            System.out.println("You are not connect to server!");
+            System.out.println("You are not connect to ftp-server.");
+            System.out.println("Result: Fail!");
         }
     }
 
