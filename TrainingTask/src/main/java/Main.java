@@ -13,8 +13,9 @@ public class Main {
     public static void main(String[] args) {
 
         // TODO: 7/13/2017 Maybe, FTPClient must be a singleton!
+        FTPClientConfig config = new FTPClientConfig(FTPClientConfig.SYST_L8);
         FTPClient ftpClient = new FTPClient();
-        FTPClientConfig ftpClientConfig = new FTPClientConfig();
+        ftpClient.configure(config);
         System.out.println(
             "Usage commands:\nConnect to FTP Server;\nDownload files;\n"
                 + "Go into folders;\nGo to parent directory;\nPrint directory content;");

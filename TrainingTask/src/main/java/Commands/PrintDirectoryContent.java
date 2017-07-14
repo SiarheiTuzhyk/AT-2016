@@ -11,14 +11,16 @@ public class PrintDirectoryContent implements Command {
 
     public void execute(FTPClient ftpClient) throws IOException {
         if(ftpClient.isConnected()){
-            FTPFile[] directoryContent = ftpClient.listFiles();
-            for (FTPFile ftpFile : directoryContent) {
-                System.out.println(ftpFile.getName()+ftpFile.getType());
+            FTPFile[] files = ftpClient.listFiles("");
+            for (FTPFile file : files) {
+                System.out.println(file.getName());
             }
+        } else {
+            System.out.println("You are not connect to ftp-server.");
         }
     }
 
     public boolean isExecutable(String command) {
-        return command.equals("print directory content");
+        return command.equals("print");
     }
 }

@@ -12,6 +12,6 @@ public class DownloadFile implements Command {
     }
 
     public boolean isExecutable(String command) {
-        return false;
+        return command.equals("download");
     }
 }
