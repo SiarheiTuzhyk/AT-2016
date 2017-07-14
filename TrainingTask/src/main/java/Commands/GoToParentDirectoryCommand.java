@@ -9,7 +9,7 @@ import org.apache.commons.net.ftp.FTPClient;
 public class GoToParentDirectoryCommand implements Command {
 
     public void execute(FTPClient ftpClient) throws IOException {
-        if(ftpClient.isConnected()){
+        if (ftpClient.isConnected()) {
             ftpClient.changeToParentDirectory();
             System.out.println("Result: Success!");
         } else {
@@ -19,6 +19,6 @@ public class GoToParentDirectoryCommand implements Command {
     }
 
     public boolean isExecutable(String command) {
-        return command.equals("parent");
+        return command.equals("parentDir");
     }
 }

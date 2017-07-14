@@ -18,12 +18,17 @@ public class Scenario {
 
     public void resultOfCommandImplementation(String enteredCommand) throws IOException {
         try {
+            int countImplCommand = 0;
             for (Command command : commandsBuild) {
                 if (command.isExecutable(enteredCommand)) {
                     command.execute(ftpClient);
+                    countImplCommand++;
                 }
             }
-        } catch (IOException ex){
+            if (countImplCommand == 0) {
+                System.out.println("Not valid command!");
+            }
+        } catch (IOException ex) {
             throw new IOException(ex);
         }
     }

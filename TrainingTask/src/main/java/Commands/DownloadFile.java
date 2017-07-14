@@ -24,9 +24,13 @@ public class DownloadFile implements Command {
 
             FTPFile[] filesPerPath = ftpClient.listFiles(workingDirectory);
             for (FTPFile ftpFile : filesPerPath) {
-                if (ftpFile.getName().equals(command[command.length - 1]) && ftpFile.isDirectory()) {
+                if (ftpFile.getName().equals(command[command.length - 1]) && ftpFile
+                    .isDirectory()) {
                     ftpClient.changeWorkingDirectory(workingDirectory.concat("/" + remoteFile));
-                } else {
+                    System.out
+                        .println("Change work directory to: " + ftpClient.printWorkingDirectory());
+                } else if (ftpFile.getName().equals(command[command.length - 1]) && ftpFile
+                    .isFile()) {
                     boolean dirDownload = new File(".//Download").mkdir();
                     File downloadFile = new File(".//Download/".concat(remoteFile));
 

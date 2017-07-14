@@ -24,6 +24,6 @@ public class GoIntoFoldersCommand implements Command {
 
     public boolean isExecutable(String command) {
         this.command = command.split(" ");
-        return this.command[0].equals("goto");
+        return this.command[0].equals("goInto");
     }
 }

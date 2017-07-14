@@ -10,7 +10,7 @@ import org.apache.commons.net.ftp.FTPFile;
 public class PrintDirectoryContent implements Command {
 
     public void execute(FTPClient ftpClient) throws IOException {
-        if(ftpClient.isConnected()){
+        if (ftpClient.isConnected()) {
             FTPFile[] files = ftpClient.listFiles("");
             for (FTPFile file : files) {
                 System.out.println(file.getName());
@@ -23,6 +23,6 @@ public class PrintDirectoryContent implements Command {
     }
 
     public boolean isExecutable(String command) {
-        return command.equals("print");
+        return command.equals("printCont");
     }
 }

@@ -14,7 +14,7 @@ public class CommandInitialization {
 
     private List<Command> listOfCommands;
 
-    public CommandInitialization(){
+    public CommandInitialization() {
         listOfCommands = initCommands();
     }
 
@@ -28,7 +28,7 @@ public class CommandInitialization {
         return checks;
     }
 
-    public List<Command> getInitializationCommands(){
+    public List<Command> getInitializationCommands() {
         return listOfCommands;
     }
 }
