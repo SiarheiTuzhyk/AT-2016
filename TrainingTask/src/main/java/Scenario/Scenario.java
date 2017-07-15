@@ -1,5 +1,7 @@
-import Commands.Command;
-import Instruction.Instruction;
+package Scenario;
+
+import Scenario.FTPCommands.FTPCommand;
+import Scenario.Instruction.Instruction;
 import java.io.IOException;
 import java.util.List;
 import org.apache.commons.net.ftp.FTPClient;
@@ -9,7 +11,7 @@ import org.apache.commons.net.ftp.FTPClient;
  */
 public class Scenario {
 
-    private List<Command> commandsBuild;
+    private List<FTPCommand> commandsBuild;
     private FTPClient ftpClient;
 
     public Scenario(FTPClient ftpClient) {
@@ -20,9 +22,9 @@ public class Scenario {
     public void resultOfCommandImplementation(Instruction enteredInstruction) throws IOException {
         try {
             if (enteredInstruction != null) {
-                for (Command command : commandsBuild) {
-                    if (command.isExecutable(enteredInstruction)) {
-                        command.execute(ftpClient, enteredInstruction);
+                for (FTPCommand FTPCommand : commandsBuild) {
+                    if (FTPCommand.isExecutable(enteredInstruction)) {
+                        FTPCommand.execute(ftpClient, enteredInstruction);
                     }
                 }
             }
