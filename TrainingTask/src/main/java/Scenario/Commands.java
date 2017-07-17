@@ -1,11 +1,9 @@
 package Scenario;
 
 /**
- * Class of ${CLASS}.
+ * Enum class of commands.
  *
- * @author Siarhei Tuzhyk.
- * @version 1.0
- * @since 15.07.2017.
+ * @author Siarhei_Tuzhyk.
  */
 public enum Commands {
     connect, download, goInto, goToParentDir, printCont

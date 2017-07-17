@@ -5,10 +5,9 @@ import java.io.IOException;
 import org.apache.commons.net.ftp.FTPClient;
 
 /**
- * Should be realizable in class which implements this interface.
+ * Interface should be realizable in class which implements this interface.
  *
  * @author Siarhei_Tuzhyk
- * @version 1.0
  */
 public interface FTPCommand {
 
@@ -17,7 +16,20 @@ public interface FTPCommand {
     static final String SUCCESS_RESULT = "Result: Success!";
     static final String SEPARATOR = "/";
 
+    /**
+     * Method for command execution.
+     *
+     * @param ftpClient object of FTP Client
+     * @param instruction parsed instruction for execute
+     * @throws IOException if exceptions whit <>FTPClient</>
+     */
     void execute(FTPClient ftpClient, Instruction instruction) throws IOException;
 
-    boolean isExecutable(Instruction command);
+    /**
+     * Check entered command with the proposed.
+     *
+     * @param instruction parsed instruction
+     * @return <>true</> if entered command equals with proposed. <>false</> otherwise.
+     */
+    boolean isExecutable(Instruction instruction);
 }

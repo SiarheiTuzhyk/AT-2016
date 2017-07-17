@@ -6,21 +6,36 @@ import java.io.IOException;
 import org.apache.commons.net.ftp.FTPClient;
 
 /**
- * Created by Siarhei_Tuzhyk on 7/13/2017.
+ * Class of <>goInto</> command execution.
+ *
+ * @author Siarhei_Tuzhyk
  */
 public class GoIntoFoldersFTPCommand implements FTPCommand {
 
+    /**
+     * Method for command execution.
+     *
+     * @param ftpClient object of FTP Client
+     * @param instruction parsed instruction for execute
+     * @throws IOException if exceptions whit <>FTPClient</>
+     */
     public void execute(FTPClient ftpClient, Instruction instruction) throws IOException {
         if (ftpClient.isConnected()) {
-            String workingDirectory = ftpClient.printWorkingDirectory().concat(SEPARATOR);
+            String workingDirectory = ftpClient.printWorkingDirectory();
             ftpClient
-                .changeWorkingDirectory(workingDirectory.concat(instruction.getPath()));
+                .changeWorkingDirectory(workingDirectory.concat(SEPARATOR+instruction.getPath()));
             System.out.println(SUCCESS_RESULT);
         } else {
-            System.out.println(FAIL_CONNECT+"\n"+FAIL_RESULT);
+            System.out.println(FAIL_CONNECT + "\n" + FAIL_RESULT);
         }
     }
 
+    /**
+     * Check entered command with the proposed.
+     *
+     * @param instruction parsed instruction
+     * @return <>true</> if entered command equals with proposed. <>false</> otherwise.
+     */
     public boolean isExecutable(Instruction instruction) {
         return instruction.getCommand().equals(Commands.goInto.name());
     }

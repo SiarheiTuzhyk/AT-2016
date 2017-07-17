@@ -10,16 +10,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Siarhei_Tuzhyk on 7/13/2017.
+ * Class for initialization commands implementation as list.
+ *
+ * @author Siarhei_Tuzhyk
  */
 public class CommandInitialization {
 
     private List<FTPCommand> listOfFTPCommands;
 
+    /**
+     * Constructor of class.
+     */
     public CommandInitialization() {
         listOfFTPCommands = initCommands();
     }
 
+    /**
+     * Method for initialization commands implementation as list.
+     * @return list of commands implementation
+     */
     private List<FTPCommand> initCommands() {
         List<FTPCommand> checks = new ArrayList<FTPCommand>();
         checks.add(new ConnectToServerFTPCommand());
@@ -30,7 +39,7 @@ public class CommandInitialization {
         return checks;
     }
 
-    public List<FTPCommand> getInitializationCommands() {
+    public List<FTPCommand> getListOfFTPCommands() {
         return listOfFTPCommands;
     }
 }

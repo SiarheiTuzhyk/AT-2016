@@ -4,14 +4,21 @@ import Scenario.Commands;
 import Scenario.Instruction.Instruction;
 
 /**
- * Created by Siarhei_Tuzhyk on 7/14/2017.
+ * Class parse entered string to <class>Instruction<class/>
+ *
+ * @author Siarhei_Tuzhyk
  */
 public class ParseEnteredString {
 
     private static final String NOT_VALID_COMMAND = "Not valid command!";
-    private static final String WITHOUT_INSTRUCTIONS = "You not entered instructions!";
+    private static final String WITHOUT_INSTRUCTIONS = "You not entered instructions for command!";
     private static final String SPACE = " ";
 
+    /**
+     * Method for getting parse instructions for further usage.
+     * @param enteredStr entered string from console.
+     * @return instruction.
+     */
     public static Instruction getInstruction(String enteredStr) {
 
         String[] components = enteredStr.split(SPACE, 2);
