@@ -1,27 +1,27 @@
-package Commands;
+package Scenario.FTPCommands;
 
-import Instruction.Instruction;
+import Scenario.Commands;
+import Scenario.Instruction.Instruction;
 import java.io.IOException;
 import org.apache.commons.net.ftp.FTPClient;
 
 /**
  * Created by Siarhei_Tuzhyk on 7/13/2017.
  */
-public class GoIntoFoldersCommand implements Command {
+public class GoIntoFoldersFTPCommand implements FTPCommand {
 
     public void execute(FTPClient ftpClient, Instruction instruction) throws IOException {
         if (ftpClient.isConnected()) {
-            String workingDirectory = ftpClient.printWorkingDirectory().concat("/");
+            String workingDirectory = ftpClient.printWorkingDirectory().concat(SEPARATOR);
             ftpClient
                 .changeWorkingDirectory(workingDirectory.concat(instruction.getPath()));
-            System.out.println("Result: Success!");
+            System.out.println(SUCCESS_RESULT);
         } else {
-            System.out.println("You are not connect to ftp-server.");
-            System.out.println("Result: Fail!");
+            System.out.println(FAIL_CONNECT+"\n"+FAIL_RESULT);
         }
     }
 
     public boolean isExecutable(Instruction instruction) {
-        return instruction.getCommand().equals("goInto");
+        return instruction.getCommand().equals(Commands.goInto.name());
     }
 }

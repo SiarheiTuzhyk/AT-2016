@@ -1,6 +1,7 @@
-package Commands;
+package Scenario.FTPCommands;
 
-import Instruction.Instruction;
+import Scenario.Commands;
+import Scenario.Instruction.Instruction;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -13,7 +14,10 @@ import org.apache.commons.net.ftp.FTPFile;
 /**
  * Created by Siarhei_Tuzhyk on 7/13/2017.
  */
-public class DownloadFile implements Command {
+public class DownloadFileFTPCommand implements FTPCommand {
+
+    private static final String SUCCESS_DOWNLOAD = "File  has been downloaded successfully.";
+    private static final String FAILED_DOWNLOAD = "Failed to download!";
 
 
     public void execute(FTPClient ftpClient, Instruction instruction) throws IOException {
@@ -30,29 +34,28 @@ public class DownloadFile implements Command {
                         .println("Change work directory to: " + ftpClient.printWorkingDirectory());
                 } else if (ftpFile.getName().equals(instruction.getPath()) && ftpFile
                     .isFile()) {
-                    boolean dirDownload = new File(".//Download").mkdir();
-                    File downloadFile = new File(".//Download/".concat(remoteFile));
+                    new File(".//download").mkdir();
+                    File downloadFile = new File(".//download/".concat(remoteFile));
 
                     OutputStream outputStream = new BufferedOutputStream(
                         new FileOutputStream(downloadFile));
                     boolean success = ftpClient
-                        .retrieveFile(workingDirectory.concat("/" + remoteFile), outputStream);
+                        .retrieveFile(workingDirectory.concat(SEPARATOR + remoteFile), outputStream);
                     outputStream.close();
                     if (success) {
-                        System.out.println("Result: File  has been downloaded successfully.");
+                        System.out.println(SUCCESS_DOWNLOAD);
                     } else {
-                        System.out.println("Failed to download!");
+                        System.out.println(FAILED_DOWNLOAD);
                     }
                 }
             }
         } else {
-            System.out.println("You are not connect to ftp-server.");
-            System.out.println("Result: Fail!");
+            System.out.println(FAIL_CONNECT+"\n"+FAIL_RESULT);
         }
 
     }
 
     public boolean isExecutable(Instruction instruction) {
-        return instruction.getCommand().equals("download");
+        return instruction.getCommand().equals(Commands.download.name());
     }
 }

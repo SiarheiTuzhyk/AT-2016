@@ -1,4 +1,6 @@
-package Instruction;
+package Scenario.Instruction;
+
+import Scenario.Commands;
 
 /**
  * Created by Siarhei_Tuzhyk on 7/14/2017.
@@ -32,34 +34,19 @@ public class Instruction {
     }
 
     public String getHostName() {
-        if (command.equals("connect")) {
-            return hostName;
-        } else {
-            return null;
-        }
+        return command.equals(Commands.connect.name()) ? hostName : null;
     }
 
     public String getLogin() {
-        if (command.equals("connect")) {
-            return login;
-        } else {
-            return null;
-        }
+        return command.equals(Commands.connect.name()) ? login : null;
     }
 
     public String getPassword() {
-        if (command.equals("connect")) {
-            return password;
-        } else {
-            return null;
-        }
+        return command.equals(Commands.connect.name()) ? password : null;
     }
 
     public String getPath() {
-        if (command.equals("download") || command.equals("goInto")) {
-            return path;
-        } else {
-            return null;
-        }
+        return command.equals(Commands.download.name()) || command.equals(Commands.goInto.name())
+            ? hostName : null;
     }
 }
