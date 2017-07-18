@@ -21,6 +21,12 @@ public class Main {
         + "\nPrint directory content - printCont"
         + "\nEmpty string - end of program!";
 
+    /**
+     * Entrance to solution.
+     * Create objects of classes for further usage and use object of <>BufferedReader</> class to get instructions from console.
+     *
+     * @param args arguments from command line.
+     */
     public static void main(String[] args) {
         System.out.println(USAGE);
 

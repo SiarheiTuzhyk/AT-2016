@@ -28,11 +28,11 @@ public class ParseEnteredString {
                 String[] argument = components[1].split(SPACE, 3);
                 String hostName = argument[0].substring(0, argument[0].length());
                 String login = argument[1].substring(0, argument[1].length());
-                String password = argument[2].substring(0, argument[2].length());
+                String password = argument[2].split(SPACE)[0];
                 return new Instruction(command, hostName, login, password);
             } else if (command.equals(Commands.download.name()) || command
                 .equals(Commands.goInto.name())) {
-                String path = components[1].substring(0, components[1].length());
+                String path = components[1].split(SPACE)[0];
                 return new Instruction(command, path);
             } else if (command.equals(Commands.goToParentDir.name()) || command
                 .equals(Commands.printCont.name())) {
