@@ -1,6 +1,6 @@
-package Scenario.FTPCommands;
+package scenario.ftpCommands;
 
-import Scenario.Instruction.Instruction;
+import scenario.instruction.Instruction;
 import java.io.IOException;
 import org.apache.commons.net.ftp.FTPClient;
 

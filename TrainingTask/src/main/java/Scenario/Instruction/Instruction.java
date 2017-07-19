@@ -1,11 +1,11 @@
-package Scenario.Instruction;
+package scenario.instruction;
 
-import Scenario.Commands;
+import scenario.Commands;
 
 /**
  * Class of instruction.
  *
- * @au
+ * @author Siarhei_Tuzhyk
  */
 public class Instruction {
 
@@ -42,6 +42,7 @@ public class Instruction {
 
     /**
      * Getter of commands.
+     *
      * @return name of command
      */
     public String getCommand() {
@@ -50,38 +51,41 @@ public class Instruction {
 
     /**
      * Getter for <>connect</> command.
-     * @return host name server.
-     * If command not equals as <>connect</>, will return null.
+     *
+     * @return host name server. If command not equals as <>connect</>, will return null.
      */
     public String getHostName() {
-        return command.equals(Commands.connect.name()) ? hostName : null;
+        return command.equals(Commands.CONNECT.name().toLowerCase()) ? hostName : null;
     }
 
     /**
      * Getter for <>connect</> command.
-     * @return login of host name server.
-     * If command not equals as <>connect</>, will return null.
+     *
+     * @return login of host name server. If command not equals as <>connect</>, will return null.
      */
     public String getLogin() {
-        return command.equals(Commands.connect.name()) ? login : null;
+        return command.equals(Commands.CONNECT.name().toLowerCase()) ? login : null;
     }
 
     /**
      * Getter for <>connect</> command.
-     * @return password of host name server.
-     * If command not equals as <>connect</>, will return null.
+     *
+     * @return password of host name server. If command not equals as <>connect</>, will return
+     * null.
      */
     public String getPassword() {
-        return command.equals(Commands.connect.name()) ? password : null;
+        return command.equals(Commands.CONNECT.name().toLowerCase()) ? password : null;
     }
 
     /**
      * Getter for <>goInto</> and <>download</> command.
-     * @return path for file or directory.
-     * If command not equals as <>goInto</> or <>download</>, will return null.
+     *
+     * @return path for file or directory. If command not equals as <>goInto</> or <>download</>,
+     * will return null.
      */
     public String getPath() {
-        return command.equals(Commands.download.name()) || command.equals(Commands.goInto.name())
+        return command.equals(Commands.DOWNLOAD.name().toLowerCase())
+            || command.equals(Commands.INTO.name().toLowerCase())
             ? path : null;
     }
 }

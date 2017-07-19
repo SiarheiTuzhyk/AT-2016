@@ -1,11 +1,11 @@
-package Scenario;
+package scenario;
 
-import Scenario.FTPCommands.FTPCommand;
-import Scenario.FTPCommands.ConnectToServerFTPCommand;
-import Scenario.FTPCommands.DownloadFileFTPCommand;
-import Scenario.FTPCommands.GoIntoFoldersFTPCommand;
-import Scenario.FTPCommands.GoToParentDirectoryFTPCommand;
-import Scenario.FTPCommands.PrintDirectoryContentFTPCommand;
+import scenario.ftpCommands.FTPCommand;
+import scenario.ftpCommands.ConnectToServerFTPCommand;
+import scenario.ftpCommands.DownloadFileFTPCommand;
+import scenario.ftpCommands.GoIntoFoldersFTPCommand;
+import scenario.ftpCommands.GoToParentDirectoryFTPCommand;
+import scenario.ftpCommands.PrintDirectoryContentFTPCommand;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,16 +27,17 @@ public class CommandInitialization {
 
     /**
      * Method for initialization commands implementation as list.
+     *
      * @return list of commands implementation
      */
     private List<FTPCommand> initCommands() {
-        List<FTPCommand> checks = new ArrayList<FTPCommand>();
-        checks.add(new ConnectToServerFTPCommand());
-        checks.add(new DownloadFileFTPCommand());
-        checks.add(new GoIntoFoldersFTPCommand());
-        checks.add(new GoToParentDirectoryFTPCommand());
-        checks.add(new PrintDirectoryContentFTPCommand());
-        return checks;
+        List<FTPCommand> ftpCommands = new ArrayList<FTPCommand>();
+        ftpCommands.add(new ConnectToServerFTPCommand());
+        ftpCommands.add(new DownloadFileFTPCommand());
+        ftpCommands.add(new GoIntoFoldersFTPCommand());
+        ftpCommands.add(new GoToParentDirectoryFTPCommand());
+        ftpCommands.add(new PrintDirectoryContentFTPCommand());
+        return ftpCommands;
     }
 
     public List<FTPCommand> getListOfFTPCommands() {

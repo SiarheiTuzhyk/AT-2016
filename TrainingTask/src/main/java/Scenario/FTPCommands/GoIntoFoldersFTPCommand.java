@@ -1,7 +1,7 @@
-package Scenario.FTPCommands;
+package scenario.ftpCommands;
 
-import Scenario.Commands;
-import Scenario.Instruction.Instruction;
+import scenario.Commands;
+import scenario.instruction.Instruction;
 import java.io.IOException;
 import org.apache.commons.net.ftp.FTPClient;
 
@@ -21,9 +21,7 @@ public class GoIntoFoldersFTPCommand implements FTPCommand {
      */
     public void execute(FTPClient ftpClient, Instruction instruction) throws IOException {
         if (ftpClient.isConnected()) {
-            String workingDirectory = ftpClient.printWorkingDirectory();
-            ftpClient
-                .changeWorkingDirectory(workingDirectory.concat(SEPARATOR+instruction.getPath()));
+            changeWorkingDirectory(ftpClient, instruction.getPath());
             System.out.println(SUCCESS_RESULT);
         } else {
             System.out.println(FAIL_CONNECT + "\n" + FAIL_RESULT);
@@ -37,6 +35,11 @@ public class GoIntoFoldersFTPCommand implements FTPCommand {
      * @return <>true</> if entered command equals with proposed. <>false</> otherwise.
      */
     public boolean isExecutable(Instruction instruction) {
-        return instruction.getCommand().equals(Commands.goInto.name());
+        return instruction.getCommand().equals(Commands.INTO.name().toLowerCase());
+    }
+
+    static void changeWorkingDirectory(FTPClient ftpClient, String path) throws IOException {
+        String workingDirectory = ftpClient.printWorkingDirectory();
+        ftpClient.changeWorkingDirectory(workingDirectory.concat(SEPARATOR + path));
     }
 }

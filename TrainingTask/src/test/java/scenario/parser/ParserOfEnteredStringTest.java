@@ -1,19 +1,24 @@
-package Scenario.Parser;
+package scenario.parser;
 
 import static org.testng.Assert.*;
 
-import Scenario.Commands;
-import Scenario.Instruction.Instruction;
+import org.testng.annotations.BeforeClass;
+import scenario.Commands;
+import scenario.instruction.Instruction;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 /**
  * Test-class for <>ParseEnteredString</>
  */
-public class ParseEnteredStringTest {
+public class ParserOfEnteredStringTest {
 
     Instruction instruction;
-
+    ParserOfEnteredString parserOfEnteredString;
+    @BeforeClass
+    public void setUo(){
+        parserOfEnteredString = new ParserOfEnteredString();
+    }
 
     @DataProvider(name = "positive getInstructions command")
     public Object[][] forPositiveGetInstructionCommandTest() {
@@ -55,28 +60,28 @@ public class ParseEnteredStringTest {
     @Test(dataProvider = "positive getInstructions command")
     public void positiveTestGetInstructionCommand(String enteredInstruction, String expectedCommand)
         throws Exception {
-        instruction = ParseEnteredString.getInstruction(enteredInstruction);
+        instruction = parserOfEnteredString.getInstruction(enteredInstruction);
         assertEquals(instruction.getCommand(), expectedCommand);
     }
 
     @Test(dataProvider = "negative getInstructions command")
     public void negativeTestGetInstructionCommand(String enteredInstruction, Instruction expected)
         throws Exception {
-        instruction = ParseEnteredString.getInstruction(enteredInstruction);
+        instruction = parserOfEnteredString.getInstruction(enteredInstruction);
         assertEquals(instruction, expected);
     }
 
     @Test(dataProvider = "positive getInstructions instruction")
     public void positiveTestGetInstruction(String enteredInstruction, String expectedInstruction)
         throws Exception {
-        instruction = ParseEnteredString.getInstruction(enteredInstruction);
-        if (instruction.getCommand().equals(Commands.connect.name())) {
+        instruction = parserOfEnteredString.getInstruction(enteredInstruction);
+        if (instruction.getCommand().equals(Commands.CONNECT.name().toLowerCase())) {
             assertEquals(instruction.getLogin(), expectedInstruction);
-        } else if (instruction.getCommand().equals(Commands.download.name())
-            || instruction.getCommand().equals(Commands.goInto.name())) {
+        } else if (instruction.getCommand().equals(Commands.DOWNLOAD.name().toLowerCase())
+            || instruction.getCommand().equals(Commands.INTO.name().toLowerCase())) {
             assertEquals(instruction.getPath(), expectedInstruction);
-        } else if (instruction.getCommand().equals(Commands.goToParentDir.name())
-            || instruction.getCommand().equals(Commands.printCont.name())) {
+        } else if (instruction.getCommand().equals(Commands.OUT.name().toLowerCase())
+            || instruction.getCommand().equals(Commands.PRINT.name().toLowerCase())) {
             assertEquals(instruction.getPath(), expectedInstruction);
         }
     }
@@ -84,7 +89,7 @@ public class ParseEnteredStringTest {
     @Test(dataProvider = "negative getInstructions instruction")
     public void negativeTestGetInstruction(String enteredInstruction, Instruction expected)
         throws Exception {
-        instruction = ParseEnteredString.getInstruction(enteredInstruction);
+        instruction = parserOfEnteredString.getInstruction(enteredInstruction);
         assertEquals(instruction, expected);
     }
 }

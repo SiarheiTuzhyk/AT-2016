@@ -1,7 +1,7 @@
-package Scenario.FTPCommands;
+package scenario.ftpCommands;
 
-import Scenario.Commands;
-import Scenario.Instruction.Instruction;
+import scenario.Commands;
+import scenario.instruction.Instruction;
 import java.io.IOException;
 import org.apache.commons.net.ftp.FTPClient;
 
@@ -35,6 +35,6 @@ public class GoToParentDirectoryFTPCommand implements FTPCommand {
      * @return <>true</> if entered command equals with proposed. <>false</> otherwise.
      */
     public boolean isExecutable(Instruction instruction) {
-        return instruction.getCommand().equals(Commands.goToParentDir.name());
+        return instruction.getCommand().equals(Commands.OUT.name().toLowerCase());
     }
 }
