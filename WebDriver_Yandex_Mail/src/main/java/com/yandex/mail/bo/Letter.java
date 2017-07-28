@@ -1,5 +1,10 @@
 package com.yandex.mail.bo;
 
+/**
+ * Objects of this class will be use in logic between test scenarios and web-pages.
+ *
+ * @author Siarhei_Tuzhyk
+ */
 public class Letter {
 
     private String addressee;

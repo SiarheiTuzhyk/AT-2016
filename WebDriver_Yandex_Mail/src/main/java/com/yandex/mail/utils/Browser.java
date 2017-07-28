@@ -10,7 +10,14 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+/**
+ * Singleton Browser-class. Include many methods for implementation some actions (click, type,
+ * refresh and more). Consist javascript executors methods.
+ *
+ * @author Siarhei_Tuzhyk
+ */
 public class Browser {
+
     private WebDriver driver;
     private static Browser instance;
     private static final int WAIT_ELEMENT_TIMEOUT = 10;
@@ -44,38 +51,45 @@ public class Browser {
             System.err.println("Error with creating URL");
         }
         */
-        driver.manage().timeouts().pageLoadTimeout(PAGE_LOAD_DEFAULT_TIMEOUT_SECONDS, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(COMMAND_DEFAULT_TIMEOUT_SECONDS, TimeUnit.SECONDS);
+        driver.manage().timeouts()
+            .pageLoadTimeout(PAGE_LOAD_DEFAULT_TIMEOUT_SECONDS, TimeUnit.SECONDS);
+        driver.manage().timeouts()
+            .implicitlyWait(COMMAND_DEFAULT_TIMEOUT_SECONDS, TimeUnit.SECONDS);
         //driver.manage().window().maximize();
         return new Browser(driver);
     }
 
-    public WebDriver getWebDriver(){
+    public WebDriver getWebDriver() {
         return driver;
     }
 
     public void waitForElementVisible(By locator) {
-        new WebDriverWait(driver, WAIT_ELEMENT_TIMEOUT).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+        new WebDriverWait(driver, WAIT_ELEMENT_TIMEOUT)
+            .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
 
     public void waitForElementEnabled(By locator) {
-        new WebDriverWait(driver, WAIT_ELEMENT_TIMEOUT).until(ExpectedConditions.elementToBeClickable(locator));
+        new WebDriverWait(driver, WAIT_ELEMENT_TIMEOUT)
+            .until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     public void highlightElement(By locator) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='5px solid green'", driver.findElement(locator));
+        ((JavascriptExecutor) driver)
+            .executeScript("arguments[0].style.border='5px solid green'", getElement(locator));
     }
 
     public void unHighlightElement(By locator) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='0px'", driver.findElement(locator));
+        ((JavascriptExecutor) driver)
+            .executeScript("arguments[0].style.border='0px'", getElement(locator));
     }
 
     public void open(String url) {
         driver.get(url);
     }
 
-    public void clickElementByJsScript(By locator){
-        ((JavascriptExecutor)driver).executeScript("arguments[0].click()",driver.findElement(locator));
+    public void clickElementByJsScript(By locator) {
+        ((JavascriptExecutor) driver)
+            .executeScript("arguments[0].click()", getElement(locator));
     }
 
     public void click(final By locator) {
@@ -83,26 +97,26 @@ public class Browser {
         highlightElement(locator);
         Screenshoter.takeScreenshot();
         unHighlightElement(locator);
-        driver.findElement(locator).click();
+        getElement(locator).click();
     }
 
     public void type(final By locator, String text) {
         waitForElementEnabled(locator);
         highlightElement(locator);
-        driver.findElement(locator).sendKeys(text);
+        getElement(locator).sendKeys(text);
         Screenshoter.takeScreenshot();
         unHighlightElement(locator);
     }
 
     public boolean isDisplayed(By locator) {
-        return !driver.findElements(locator).isEmpty();
+        return !getElements(locator).isEmpty();
     }
 
-    public List<WebElement> getElements(By locator){
+    public List<WebElement> getElements(By locator) {
         return driver.findElements(locator);
     }
 
-    public WebElement getElement(By locator){
+    public WebElement getElement(By locator) {
         return driver.findElement(locator);
     }
 

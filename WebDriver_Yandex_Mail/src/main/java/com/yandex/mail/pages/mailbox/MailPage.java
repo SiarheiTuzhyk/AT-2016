@@ -3,6 +3,11 @@ package com.yandex.mail.pages.mailbox;
 import com.yandex.mail.bo.Letter;
 import org.openqa.selenium.By;
 
+/**
+ * Page-class of "Mail" in MailBox.
+ *
+ * @author Siarhei_Tuzhyk
+ */
 public class MailPage extends MailBox {
 
     private static final By ADDRESSEE_FIELD_LOCATOR = By

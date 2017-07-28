@@ -10,6 +10,11 @@ import com.yandex.mail.steps.MailSteps;
 import com.yandex.mail.steps.TrashSteps;
 import com.yandex.mail.utils.Browser;
 
+/**
+ * Test-class of Trash folder of Yandex Mail service.
+ *
+ * @author Siarhei_Tuzhyk
+ */
 public class TrashTest {
 
     MailSteps mailSteps;

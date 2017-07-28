@@ -11,6 +11,11 @@ import com.yandex.mail.steps.MailSteps;
 import com.yandex.mail.steps.SearchBoxSteps;
 import com.yandex.mail.utils.Browser;
 
+/**
+ * Test-class of Search field of Yandex Mail service.
+ *
+ * @author Siarhei_Tuzhyk
+ */
 public class SearchFieldTest {
 
     MailSteps mailSteps;
@@ -27,8 +32,7 @@ public class SearchFieldTest {
     @DataProvider(name = "options for Yandex mail search field test")
     public Object[][] mailTestDataProvider() {
         return new Object[][]{
-            {"pavel.yachkurynski@yandex.by", "searchField", "test body",
-                "simple_subject"}
+            {"pavel.yachkurynski@yandex.by", "searchField", "test body", "simple_subject"}
         };
     }
 
@@ -36,14 +40,15 @@ public class SearchFieldTest {
     public void searchFieldTest(String addressee, String checkSubject, String body,
         String simpleSubject) {
 
-        user.setLetter(new Letter(addressee,checkSubject,body));
+        user.setLetter(new Letter(addressee, checkSubject, body));
         mailSteps.navigateToHomePage();
         mailSteps.logIn(user);
         Assert.assertTrue(mailSteps.isLogin());
         mailSteps.createMail(user.getLetter());
         mailSteps.sendMail();
         mailSteps.toInboxFolder();
-        mailSteps.createMail(new Letter(addressee,simpleSubject,checkSubject));
+        //body of this letter consist subject of previous letter
+        mailSteps.createMail(new Letter(addressee, simpleSubject, checkSubject));
         mailSteps.sendMail();
         mailSteps.toSentFolder();
         searchBoxSteps.findSubjectBySearch(user.getLetter());

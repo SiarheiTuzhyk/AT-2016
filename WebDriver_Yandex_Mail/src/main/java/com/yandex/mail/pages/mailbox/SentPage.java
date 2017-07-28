@@ -3,6 +3,11 @@ package com.yandex.mail.pages.mailbox;
 import com.yandex.mail.bo.Letter;
 import org.openqa.selenium.By;
 
+/**
+ * Page-class of "Sent" folder in MailBox.
+ *
+ * @author Siarhei_Tuzhyk
+ */
 public class SentPage extends MailBox {
 
     private static final By CHECK_ADDRESSEE_IN_MAIL_LOCATOR = By

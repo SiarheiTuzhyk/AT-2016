@@ -2,6 +2,11 @@ package com.yandex.mail.pages.mailbox;
 
 import org.openqa.selenium.By;
 
+/**
+ * Page-class of "Draft" folder in MailBox.
+ *
+ * @author Siarhei_Tuzhyk
+ */
 public class DraftPage extends MailBox {
 
     private static final By MESSAGES_IN_DRAFT_LOCATOR = By

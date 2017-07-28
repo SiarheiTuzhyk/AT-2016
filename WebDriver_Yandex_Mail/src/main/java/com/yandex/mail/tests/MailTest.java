@@ -10,6 +10,11 @@ import org.testng.annotations.Test;
 import com.yandex.mail.steps.MailSteps;
 import com.yandex.mail.utils.Browser;
 
+/**
+ * Class test Yandex Mail service with elementary steps.
+ *
+ * @author Siarhei_Tuzhyk
+ */
 public class MailTest {
 
     MailSteps mailSteps;

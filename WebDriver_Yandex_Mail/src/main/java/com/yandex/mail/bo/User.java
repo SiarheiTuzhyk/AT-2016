@@ -1,5 +1,10 @@
 package com.yandex.mail.bo;
 
+/**
+ * User class. Consist attributes, which needed in test scenarios;
+ *
+ * @author Siarhei_Tuzhyk
+ */
 public class User {
 
     private final String userName = "ya.mail-testing@yandex.ru";

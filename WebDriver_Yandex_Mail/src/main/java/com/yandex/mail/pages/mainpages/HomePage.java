@@ -2,6 +2,11 @@ package com.yandex.mail.pages.mainpages;
 
 import org.openqa.selenium.By;
 
+/**
+ * Page-class of home page of Yandex.
+ *
+ * @author Siarhei_Tuzhyk
+ */
 public class HomePage extends AbstractPage {
 
     private static final By BUTTON_LOGIN_PAGE_LOCATOR = By.

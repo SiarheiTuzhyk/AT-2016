@@ -8,11 +8,15 @@ import org.openqa.selenium.WebDriver;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Screenshoter class. Make screenshot, when method of class will be called.
+ */
 public class Screenshoter {
+
     private static final String SCREENSHOTS_NAME_TPL = "screenshots/scr";
 
     public static void takeScreenshot() {
-        WebDriver driver =  Browser.getBrowserInstance().getWebDriver();
+        WebDriver driver = Browser.getBrowserInstance().getWebDriver();
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
             String screenshotName = SCREENSHOTS_NAME_TPL + System.nanoTime();

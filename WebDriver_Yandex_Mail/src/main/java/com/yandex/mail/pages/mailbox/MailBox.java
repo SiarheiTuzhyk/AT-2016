@@ -6,6 +6,8 @@ import com.yandex.mail.pages.mainpages.AbstractPage;
 /**
  * Class be inheritance <>AbstractPage</>. Classes, which have links to mail folders should extend
  * this class.
+ *
+ * @author Siarhei_Tuzhyk
  */
 public class MailBox extends AbstractPage {
 

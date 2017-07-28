@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 
 /**
  * All page-classes should inheritance this class.
+ *
+ * @author Siarhei_Tuzhyk
  */
 public class AbstractPage {
 

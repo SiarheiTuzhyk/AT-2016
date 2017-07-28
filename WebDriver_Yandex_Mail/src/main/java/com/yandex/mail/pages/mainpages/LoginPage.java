@@ -3,6 +3,11 @@ package com.yandex.mail.pages.mainpages;
 import com.yandex.mail.bo.User;
 import org.openqa.selenium.By;
 
+/**
+ * Page-class of page "Login".
+ *
+ * @author Siarhei_Tuzhyk
+ */
 public class LoginPage extends AbstractPage {
 
     private static final By LOGIN_FIELD_LOCATOR = By

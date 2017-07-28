@@ -5,6 +5,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+/**
+ * Page-class of "Inbox" folder in MailBox.
+ *
+ * @author Siarhei_Tuzhyk
+ */
 public class InboxPage extends MailBox {
 
     private static final By INBOX_MAILS_LOCATOR = By
@@ -25,9 +30,9 @@ public class InboxPage extends MailBox {
         Actions actions = new Actions(browser.getWebDriver());
         for (int i = 0; i < elements.size(); i++) {
             browser.isDisplayed(INBOX_MAILS_LOCATOR);
-            elements =  browser.getElements(INBOX_MAILS_LOCATOR);
+            elements = browser.getElements(INBOX_MAILS_LOCATOR);
             actions.moveToElement(elements.get(i)).click().build().perform();
-            String title =  browser.getElement(MAIL_AUTHOR_LOCATOR).getAttribute(TITLE_ATTRIBUTE);
+            String title = browser.getElement(MAIL_AUTHOR_LOCATOR).getAttribute(TITLE_ATTRIBUTE);
             if (author.equals(title)) {
                 browser.click(BUTTON_DELETE_MAIL_LOCATOR);
             } else {

@@ -9,6 +9,11 @@ import com.yandex.mail.pages.mainpages.LoginPage;
 import com.yandex.mail.pages.mailbox.MailPage;
 import com.yandex.mail.pages.mailbox.SentPage;
 
+/**
+ * Steps for tests. It's a level between tests and pages.
+ *
+ * @author Siarhei_Tuzhyk
+ */
 public class MailSteps {
 
     LoginPage loginPage = new LoginPage();
@@ -58,7 +63,7 @@ public class MailSteps {
         mailPage.toSentFolder();
     }
 
-    public void toInboxFolder(){
+    public void toInboxFolder() {
         mailPage.toInboxFolder();
     }
 

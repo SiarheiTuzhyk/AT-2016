@@ -5,6 +5,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+/**
+ * Page-class of "Trash" folder in MailBox.
+ *
+ * @author Siarhei_Tuzhyk
+ */
 public class TrashPage extends MailBox {
 
     private static final By TRASH_MAILS_LOCATOR = By

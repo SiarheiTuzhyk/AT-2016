@@ -6,6 +6,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+/**
+ * Page-class of search result in MailBox.
+ *
+ * @author Siarhei_Tuzhyk
+ */
 public class SearchFieldResultPage extends MailBox {
 
     private static final By RESULT_MAILS_LOCATOR = By
@@ -21,7 +26,7 @@ public class SearchFieldResultPage extends MailBox {
 
     public void fillSearchField(String subject) {
         browser.waitForElementEnabled(SEARCH_FILED_LOCATOR);
-        browser.type(SEARCH_FILED_LOCATOR,subject);
+        browser.type(SEARCH_FILED_LOCATOR, subject);
     }
 
     public void search() {
