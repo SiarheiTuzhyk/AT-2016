@@ -1,6 +1,7 @@
-package steps;
+package com.yandex.mail.steps;
 
-import pages.*;
+import com.yandex.mail.pages.mailbox.InboxPage;
+import com.yandex.mail.pages.mailbox.TrashPage;
 
 public class TrashSteps {
 

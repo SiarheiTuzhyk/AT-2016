@@ -1,11 +1,13 @@
-package steps;
+package com.yandex.mail.steps;
 
-import pages.DraftPage;
-import pages.HomePage;
-import pages.InboxPage;
-import pages.LoginPage;
-import pages.MailPage;
-import pages.SentPage;
+import com.yandex.mail.bo.Letter;
+import com.yandex.mail.bo.User;
+import com.yandex.mail.pages.mailbox.DraftPage;
+import com.yandex.mail.pages.mainpages.HomePage;
+import com.yandex.mail.pages.mailbox.InboxPage;
+import com.yandex.mail.pages.mainpages.LoginPage;
+import com.yandex.mail.pages.mailbox.MailPage;
+import com.yandex.mail.pages.mailbox.SentPage;
 
 public class MailSteps {
 
@@ -21,18 +23,18 @@ public class MailSteps {
         homePage.switchToComDomain();
     }
 
-    public void logIn(String userName, String password) {
+    public void logIn(User user) {
         homePage.toLoginPage();
-        loginPage.login(userName, password);
+        loginPage.login(user);
     }
 
     public boolean isLogin() {
         return loginPage.isSuccessLogin();
     }
 
-    public void createMail(String addressee, String subject, String body) {
-        inboxPage.clickCompose();
-        mailPage.fillMail(addressee, subject, body);
+    public void createMail(Letter letter) {
+        inboxPage.composeMail();
+        mailPage.fillMail(letter);
     }
 
     public void saveToDraft() {
@@ -43,9 +45,9 @@ public class MailSteps {
         return draftPage.verifyMailPresentedInDraft();
     }
 
-    public boolean verifyLastMail(String addressee, String subject, String body) {
+    public boolean verifyLastMail(Letter letter) {
         draftPage.openLastMail();
-        return mailPage.verifyLastMail(addressee, subject, body);
+        return mailPage.verifyLastMail(letter);
     }
 
     public void sendMail() {
@@ -56,9 +58,12 @@ public class MailSteps {
         mailPage.toSentFolder();
     }
 
+    public void toInboxFolder(){
+        mailPage.toInboxFolder();
+    }
 
-    public boolean verifyMailInSentFolder(String addressee, String subject) {
-        return sentPage.verifyMailInSent(addressee, subject);
+    public boolean verifyMailInSentFolder(Letter letter) {
+        return sentPage.verifyMailInSent(letter);
     }
 
     public void logOut() {

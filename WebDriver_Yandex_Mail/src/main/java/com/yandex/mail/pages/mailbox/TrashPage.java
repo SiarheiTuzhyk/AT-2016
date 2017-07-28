@@ -1,4 +1,4 @@
-package pages;
+package com.yandex.mail.pages.mailbox;
 
 import java.util.List;
 import org.openqa.selenium.By;
@@ -11,9 +11,9 @@ public class TrashPage extends MailBox {
         .xpath("//div[@class='mail-MessageSnippet-Content']");
     private static final By MAIL_AUTHOR_LOCATOR = By
         .xpath("//span[contains(@class,'mail-Message-Sender-Email')]");
-    private static final By BUTTON_TO_FOLDER_LOCATOR = By
+    private static final By BUTTON_MOVE_TO_FOLDER_LOCATOR = By
         .xpath("//span[contains(@class,'js-toolbar-item-title-folders-actions')]");
-    private static final By BUTTON_TO_INBOX_FOLDER_LOCATOR = By
+    private static final By BUTTON_MOVE_TO_INBOX_FOLDER_LOCATOR = By
         .xpath("//a[@data-params='fid=1&toolbar=1']/span[@class='js-folder-name']");
 
 
@@ -24,14 +24,12 @@ public class TrashPage extends MailBox {
             browser.waitForElementEnabled(TRASH_MAILS_LOCATOR);
             elements = browser.getElements(TRASH_MAILS_LOCATOR);
             actions.moveToElement(elements.get(0)).click().build().perform();
-            String title = browser.getElement(MAIL_AUTHOR_LOCATOR)
-                .getAttribute(TITLE_ATTRIBUTE);
+            String title = browser.getElement(MAIL_AUTHOR_LOCATOR).getAttribute(TITLE_ATTRIBUTE);
             if (author.equals(title)) {
-                browser.click(BUTTON_TO_FOLDER_LOCATOR);
-                browser.click(BUTTON_TO_INBOX_FOLDER_LOCATOR);
-                browser.click(BUTTON_TRASH_FOLDER_LOCATOR);
+                browser.click(BUTTON_MOVE_TO_FOLDER_LOCATOR);
+                browser.click(BUTTON_MOVE_TO_INBOX_FOLDER_LOCATOR);
             }
-            browser.click(BUTTON_TRASH_FOLDER_LOCATOR);
+            toTrashFolder();
         }
         browser.refresh();
         return browser.getElements(MAIL_AUTHOR_LOCATOR).size() == 0;

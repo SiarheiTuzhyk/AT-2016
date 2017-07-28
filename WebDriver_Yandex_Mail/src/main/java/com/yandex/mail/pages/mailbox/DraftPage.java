@@ -1,4 +1,4 @@
-package pages;
+package com.yandex.mail.pages.mailbox;
 
 import org.openqa.selenium.By;
 
@@ -11,7 +11,7 @@ public class DraftPage extends MailBox {
             + "//span[contains(@class,'js-message-snippet-body')]");
 
     public boolean verifyMailPresentedInDraft() {
-        browser.click(BUTTON_DRAFT_FOLDER_LOCATOR);
+        toDraftFolder();
         browser.refresh();
         return browser.isDisplayed(MESSAGES_IN_DRAFT_LOCATOR);
     }

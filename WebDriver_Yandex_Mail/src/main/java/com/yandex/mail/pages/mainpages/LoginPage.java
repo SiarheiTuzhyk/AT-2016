@@ -1,5 +1,6 @@
-package pages;
+package com.yandex.mail.pages.mainpages;
 
+import com.yandex.mail.bo.User;
 import org.openqa.selenium.By;
 
 public class LoginPage extends AbstractPage {
@@ -25,9 +26,9 @@ public class LoginPage extends AbstractPage {
         browser.click(BUTTON_LOGIN_LOCATOR);
     }
 
-    public void login(String userName, String password) {
-        this.setUserName(userName);
-        this.setPassword(password);
+    public void login(User user) {
+        this.setUserName(user.getUserName());
+        this.setPassword(user.getPassword());
         this.clickLogin();
     }
 

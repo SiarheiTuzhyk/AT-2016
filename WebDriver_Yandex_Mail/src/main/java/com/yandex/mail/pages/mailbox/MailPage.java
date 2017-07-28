@@ -1,5 +1,6 @@
-package pages;
+package com.yandex.mail.pages.mailbox;
 
+import com.yandex.mail.bo.Letter;
 import org.openqa.selenium.By;
 
 public class MailPage extends MailBox {
@@ -34,10 +35,10 @@ public class MailPage extends MailBox {
         browser.type(BODY_FIELD_LOCATOR, body);
     }
 
-    public void fillMail(String addressee, String subject, String body) {
-        this.setAddresseeField(addressee);
-        this.setSubjectField(subject);
-        this.setBodyField(body);
+    public void fillMail(Letter letter) {
+        this.setAddresseeField(letter.getAddressee());
+        this.setSubjectField(letter.getSubject());
+        this.setBodyField(letter.getBody());
     }
 
     public void sendMail() {
@@ -46,7 +47,7 @@ public class MailPage extends MailBox {
     }
 
     public void saveToDraft() {
-        browser.click(BUTTON_DRAFT_FOLDER_LOCATOR);
+        toDraftFolder();
         clickSaveToPopUp();
     }
 
@@ -56,20 +57,16 @@ public class MailPage extends MailBox {
         }
     }
 
-    public boolean verifyLastMail(String addressee, String subject, String body) {
+    public boolean verifyLastMail(Letter letter) {
         String currentAddressee = browser.getElement(CHECK_ADDRESSEE_LOCATOR)
-            .getAttribute("data-contact-email");
+            .getAttribute(ADDRESSEE_EMAIL_ATTRIBUTE);
         String currentSubject = browser.getElement(CHECK_SUBJECT_LOCATOR)
             .getAttribute(VALUE_ATTRIBUTE);
         String currentBody = browser.getElement(CHECK_BODY_LOCATOR)
             .getText();
 
-        return (addressee.equals(currentAddressee)
-            && subject.equals(currentSubject)
-            && body.equals(currentBody));
-    }
-
-    public void toSentFolder() {
-        browser.click(BUTTON_SENT_FOLDER_LOCATOR);
+        return (letter.getAddressee().equals(currentAddressee)
+            && letter.getSubject().equals(currentSubject)
+            && letter.getBody().equals(currentBody));
     }
 }

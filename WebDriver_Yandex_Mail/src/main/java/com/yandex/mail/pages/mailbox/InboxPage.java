@@ -1,4 +1,4 @@
-package pages;
+package com.yandex.mail.pages.mailbox;
 
 import java.util.List;
 import org.openqa.selenium.By;
@@ -20,10 +20,6 @@ public class InboxPage extends MailBox {
     private static final By BUTTON_DELETE_MAIL_LOCATOR = By
         .xpath("//span[contains(@class,'js-toolbar-item-title-delete')]");
 
-    public void clickCompose() {
-        browser.click(COMPOSE_MAIL_LOCATOR);
-    }
-
     public void moveMailsByAuthorToTrash(String author) {
         List<WebElement> elements = browser.getElements(INBOX_MAILS_LOCATOR);
         Actions actions = new Actions(browser.getWebDriver());
@@ -44,9 +40,5 @@ public class InboxPage extends MailBox {
         browser.click(BUTTON_CHANGE_FILTER_LOCATOR);
         browser.click(FILTER_BY_PEOPLE_LOCATOR);
         browser.refresh();
-    }
-
-    public void toTrashFolder() {
-        browser.click(BUTTON_TRASH_FOLDER_LOCATOR);
     }
 }

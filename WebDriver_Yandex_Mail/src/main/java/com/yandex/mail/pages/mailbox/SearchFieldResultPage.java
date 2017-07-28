@@ -1,5 +1,6 @@
-package pages;
+package com.yandex.mail.pages.mailbox;
 
+import com.yandex.mail.bo.Letter;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -29,7 +30,7 @@ public class SearchFieldResultPage extends MailBox {
         actions.moveToElement(browser.getElement(BUTTON_SEARCH_LOCATOR)).click().build().perform();
     }
 
-    public boolean checkSearchResult(String subject) {
+    public boolean checkSearchResult(Letter letter) {
         boolean result = false;
         browser.waitForElementEnabled(RESULT_MAILS_LOCATOR);
         List<WebElement> elements = browser.getElements(RESULT_MAILS_LOCATOR);
@@ -37,9 +38,9 @@ public class SearchFieldResultPage extends MailBox {
         for (int i = 0; i <= elements.size(); i++) {
             browser.waitForElementEnabled(RESULT_MAILS_LOCATOR);
             elements = browser.getElements(RESULT_MAILS_LOCATOR);
-            actions.moveToElement(elements.get(0)).click().build().perform();
+            actions.moveToElement(elements.get(i)).click().build().perform();
             String title = browser.getElement(MAIL_SUBJECT_LOCATOR).getText();
-            if (subject.equals(title)) {
+            if (letter.getSubject().equals(title)) {
                 result = true;
                 break;
             } else {

@@ -1,6 +1,6 @@
-package pages;
+package com.yandex.mail.pages.mainpages;
 
-import utils.Browser;
+import com.yandex.mail.utils.Browser;
 import org.openqa.selenium.By;
 
 /**
@@ -17,5 +17,4 @@ public class AbstractPage {
     public boolean isElementPresent(By locator) {
         return browser.isDisplayed(locator);
     }
-
 }

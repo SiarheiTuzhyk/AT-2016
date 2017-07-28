@@ -1,4 +1,4 @@
-package utils;
+package com.yandex.mail.utils;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -29,11 +29,10 @@ public class Browser {
     }
 
     private static Browser init() {
-        System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
         WebDriver driver = new FirefoxDriver();
-        
         /*
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
 
         //For Selenium Grid
@@ -45,7 +44,6 @@ public class Browser {
             System.err.println("Error with creating URL");
         }
         */
-
         driver.manage().timeouts().pageLoadTimeout(PAGE_LOAD_DEFAULT_TIMEOUT_SECONDS, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(COMMAND_DEFAULT_TIMEOUT_SECONDS, TimeUnit.SECONDS);
         //driver.manage().window().maximize();
@@ -72,18 +70,19 @@ public class Browser {
         ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='0px'", driver.findElement(locator));
     }
 
-    public void clickElementByJsScript(By locator){
-        ((JavascriptExecutor)driver).executeScript("arguments[0].click()",driver.findElement(locator));
-    }
-
     public void open(String url) {
         driver.get(url);
     }
 
+    public void clickElementByJsScript(By locator){
+        ((JavascriptExecutor)driver).executeScript("arguments[0].click()",driver.findElement(locator));
+    }
+
     public void click(final By locator) {
         waitForElementEnabled(locator);
-        //highlightElement(locator);
-        //unHighlightElement(locator);
+        highlightElement(locator);
+        Screenshoter.takeScreenshot();
+        unHighlightElement(locator);
         driver.findElement(locator).click();
     }
 
@@ -91,6 +90,7 @@ public class Browser {
         waitForElementEnabled(locator);
         highlightElement(locator);
         driver.findElement(locator).sendKeys(text);
+        Screenshoter.takeScreenshot();
         unHighlightElement(locator);
     }
 
@@ -115,7 +115,7 @@ public class Browser {
             try {
                 instance.driver.quit();
             } catch (Exception e) {
-                System.err.println("Cannot kill browser");
+                System.err.println("Can not kill browser");
             } finally {
                 instance = null;
             }

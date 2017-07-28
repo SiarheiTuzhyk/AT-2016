@@ -1,4 +1,4 @@
-package pages;
+package com.yandex.mail.pages.mainpages;
 
 import org.openqa.selenium.By;
 
